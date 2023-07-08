@@ -5,6 +5,7 @@ extern unsigned char g_Interrupt_Flag = 0;
 ISR(INT0_vect)
 {
 	g_Interrupt_Flag = 1;
+	interupt_function();
 }
 // External INT0 enable and configuration function
 void INT0_Init(void)

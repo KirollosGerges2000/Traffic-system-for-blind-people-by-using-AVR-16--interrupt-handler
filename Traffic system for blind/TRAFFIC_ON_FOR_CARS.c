@@ -12,7 +12,6 @@ int TRAFFIC_ON_FOR_CARS( )
   /*
   activating interrupt
   ;Implement TRAFFIC_OFF_FOR_PEOPLE function*/
-   u8 g_Interrupt_Flag;
    /* volatile counter_1 , counter_2 for preserving the 
    last value during interrupt*/
 volatile u8 counter_1=9;  
@@ -29,13 +28,11 @@ volatile u8 counter_1=9;
  PORTC = 0x09;
   //initialize value of PORTS,Flags
  PORTA = 0x09;
-   g_Interrupt_Flag = 0; 
 // begin process
 while(counter_1!=0 && counter_2!=0)
 	{ 
 		counter_2--;
 		PORTA=counter_2;
-		interupt_function();
 			_delay_ms(810); //delay time for counting
 	
 	if( PORTA == 0x00)
@@ -52,7 +49,6 @@ while(counter_1!=0 && counter_2!=0)
 		PORTC = 0x00;
 counter_2--;
 PORTA=counter_2;
-	interupt_function();
 if(counter_2<=4)
 {
 	disablegreenLED();
